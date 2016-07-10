@@ -18,8 +18,9 @@ int main(int argc, const char * argv[]) {
 			return EX_NOINPUT;
 		}
 
-		NSURL *URL1 = [NSURL fileURLWithPath:args[1]];
-		NSURL *URL2 = [NSURL fileURLWithPath:args[2]];
+		//We're assuming that these aren't directories, on the grounds that FSExchangeObjects will fail if they are anyway.
+		NSURL *URL1 = [NSURL fileURLWithPath:args[1] isDirectory:NO];
+		NSURL *URL2 = [NSURL fileURLWithPath:args[2] isDirectory:NO];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
 		FSRef ref1, ref2;
