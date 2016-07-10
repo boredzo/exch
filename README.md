@@ -2,6 +2,8 @@
 
 macOS has a little-known API in the Toolbox/Carbon/Core Services File Manager named `FSExchangeObjects`. Given two regular files (not symlinks, not directories), `FSExchangeObjects` will swap their contents.
 
+![Screenshot of exch being used in a terminal.](README-assets/exch-example.png)
+
 It does this at the file-system level, so it's really fast. On my system, generating two 1 GiB files from /dev/zero on [a RAM disk](/make-ram-disk) takes one second each. Copying that file takes half a second (why that's faster than copying from /dev/zero isn't clear to me). Exchanging their contents with `FSExchangeObjects` is instant.
 
 ## Does it work on other file-systems, or only HFS(+/X)?
